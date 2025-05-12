@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heart Attack Risk</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="predict-container">
+    <h2>Check Heart Attack Risk</h2>
+    <form action="/predict" method="POST">
+      <input type="number" step="any" name="age" placeholder="Age" required>
+      <input type="number" step="any" name="heart_rate" placeholder="Heart Rate" required>
+      <input type="number" step="any" name="blood_sugar" placeholder="Blood Sugar" required>
+      <!-- <input type="number" step="any" name="gender" placeholder="Gender (0 for Female, 1 for Male)" required> -->
+      <button type="submit">Check Risk</button>
+    </form>
+    {% if result %}
+    <p class="result">Prediction: <strong>{{ result }}</strong></p>
+    {% endif %}
+  </div>
+</body>
+</html>
